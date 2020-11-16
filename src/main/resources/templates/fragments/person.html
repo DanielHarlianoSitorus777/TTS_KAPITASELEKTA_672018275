@@ -1,0 +1,234 @@
+<div th:fragment="data">
+    <table border="1" class="table table-striped display" id="myTable">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>AGE</th>
+                <th>GENDER</th>
+                <th></th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="as : ${people}">
+                <td th:text="${as.id}"></td>
+                <td th:text="${as.name}"></td>
+                <td th:text="${as.gender}"></td>
+                <td th:text="${as.age}"></td>
+                <td>
+                    <a th:href="@{update/} + ${as.id}" method="REQUEST">Update</a>
+                </td>
+                <td>
+                    <a th:href="@{delete/} + ${as.id}" method="REQUEST">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:fragment="data_male">
+    <table border="1" class="table table-striped display" id="example">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>AGE</th>
+                <th>GENDER</th>
+                <th></th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="as : ${people}">
+                <td th:text="${as.id}"></td>
+                <td th:text="${as.name}"></td>
+                <td th:text="${as.gender}"></td>
+                <td th:text="${as.age}"></td>
+                <td>
+                    <a th:href="@{update/} + ${as.id}" method="REQUEST">Update</a>
+                </td>
+                <td>
+                    <a th:href="@{delete/} + ${as.id}" method="REQUEST">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>AGE</th>
+                <th>GENDER</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<div th:fragment="save_modal">
+    <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
+            Save modal
+        </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <p></p>
+                    <form th:object="${person}" th:action="@{save}" method="POST">
+                        <table width="25%">
+                            <tr>
+                                <td>ID</td>
+                                <td>:</td>
+                                <td><input type="text" th:field="*{id}" /></td>
+                            </tr>
+
+                            <tr>
+                                <td>Nama</td>
+                                <td>:</td>
+                                <td><input type="text" th:field="*{name}" /></td>
+                            </tr>
+
+                            <tr>
+                                <td>Age</td>
+                                <td>:</td>
+                                <td><input type="number" th:field="*{age}" /></td>
+                            </tr>
+
+                            <tr>
+                                <td>Gender</td>
+                                <td>:</td>
+                                <td>
+                                    <select name="gender-list" th:field="*{gender}">
+                                        <option value="Male">Laki-laki</option>
+                                        <option value="Female">Perempuan</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="3"><input type="submit" value="Save" name="Save" /></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="put_modal">
+    <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
+            Save modal pop-up
+        </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <p></p>
+                    <form th:object="${person}" th:action="@{/put}" method="POST">
+                        <table width="25%">
+                            <tr>
+                                <td>ID</td>
+                                <td>:</td>
+                                <td><input type="text" th:field="*{id}" readonly="true"/></td>
+                            </tr>
+
+                            <tr>
+                                <td>Nama</td>
+                                <td>:</td>
+                                <td><input type="text" th:field="*{name}" /></td>
+                            </tr>
+
+                            <tr>
+                                <td>Age</td>
+                                <td>:</td>
+                                <td><input type="number" th:field="*{age}" /></td>
+                            </tr>
+
+                            <tr>
+                                <td>Gender</td>
+                                <td>:</td>
+                                <td>
+                                    <select name="gender-list" th:field="*{gender}">
+                                        <option value="Male">Laki-laki</option>
+                                        <option value="Female">Perempuan</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="3"><input type="submit" value="Save" name="Save" /></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="male_btn">
+    <form th:object="${person}" th:action="@{/gender/male}" method="GET">
+            <div class="col">
+            <button type="submit" class="btn btn-danger">
+                Male
+            </button>
+        </div>
+    </form>
+</div>
+
+<div th:fragment="female_btn">
+    <form th:object="${person}" th:action="@{/gender/female}" method="GET">
+        <div class="col">
+            <button type="submit" class="btn btn-success">
+                Female
+            </button>
+        </div>
+    </form>
+</div>
+
+<div th:fragment="header">
+    <nav class="navbar navbar-expand-sm bg-light navbar-dark fixed-top justify-content-center">
+        <h1>Table Person</h1>
+    </nav>
+</div>
+
+<div th:fragment="footer">
+    <nav class="navbar navbar-expand-sm bg-light navbar-dark fixed-bottom justify-content-center">
+        <img style="width: 50px;" src="https://media-exp1.licdn.com/dms/image/C560BAQGjgseZ2Zy3Kw/company-logo_200_200/0?e=2159024400&v=beta&t=gyi34ta5wNv2r5EScRo3WNv6PUsz1vXUcvMUf4pzmA4" />
+    </nav>
+</div>
+
