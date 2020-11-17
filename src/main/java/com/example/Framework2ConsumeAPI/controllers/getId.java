@@ -7,7 +7,7 @@ package com.example.Framework2ConsumeAPI.controllers;
 
 /**
  *
- * @author acer
+ * @author ASUS
  */
 public class getId {
     public static String id;

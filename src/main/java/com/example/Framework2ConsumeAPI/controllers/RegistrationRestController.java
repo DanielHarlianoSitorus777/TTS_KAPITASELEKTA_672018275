@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  *
- * @author acer
+ * @author ASUS
  */
 @Controller
 public class RegistrationRestController {

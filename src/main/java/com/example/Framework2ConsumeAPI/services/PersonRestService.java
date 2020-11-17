@@ -20,7 +20,7 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  *
- * @author Josua
+ * @author ASUS
  */
 @Service
 public class PersonRestService {

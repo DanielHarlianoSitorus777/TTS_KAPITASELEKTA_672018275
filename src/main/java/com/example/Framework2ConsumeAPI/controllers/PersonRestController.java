@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Josua
+ * @author ASUS
  */
 @RequestMapping("person")
 @Controller

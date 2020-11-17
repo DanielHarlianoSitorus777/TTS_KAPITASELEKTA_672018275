@@ -9,7 +9,7 @@ import lombok.Data;
 
 /**
  *
- * @author Josua
+ * @author ASUS
  */
 @Data
 public class Person {

@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  *
- * @author acer
+ * @author ASUS
  */
 @Service
 public class LoginRestService {
