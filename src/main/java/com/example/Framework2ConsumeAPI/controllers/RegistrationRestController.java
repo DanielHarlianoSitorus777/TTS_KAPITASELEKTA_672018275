@@ -3,6 +3,7 @@ package com.example.Framework2ConsumeAPI.controllers;
 
 import com.example.Framework2ConsumeAPI.entities.rest.LoginInput;
 import com.example.Framework2ConsumeAPI.entities.rest.RegisterUser;
+import com.example.Framework2ConsumeAPI.services.GetRestService;
 import com.example.Framework2ConsumeAPI.services.RegistrationRestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,10 +20,14 @@ import org.springframework.web.client.RestTemplate;
 public class RegistrationRestController {
     @Autowired
     RegistrationRestService service;
+    @Autowired
+    GetRestService getService;
     
     @GetMapping("register")
     public String regris(Model model){
         model.addAttribute("registrasi",new RegisterUser());
+        model.addAttribute("universities",getService.getAllUniversity());
+        model.addAttribute("major",getService.getAllMajor());
         return "formRegistrasi";
     }
     

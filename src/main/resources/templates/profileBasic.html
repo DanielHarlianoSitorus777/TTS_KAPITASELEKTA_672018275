@@ -35,6 +35,9 @@ and open the template in the editor.
                         <a class="nav-link" href="occupation" style="color: white"><i class="fas fa-user-md"></i> Occupation</a><br>
                     </li>
                 </ul>
+                <form th:action="@{/logout}" method="GET">
+                    <input  type="submit" value="Logout" class="btn btn-danger" />
+                </form>  
             </div>
             
             

@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 
 /**
  *
- * @author Mario Wijaya
+ * @author ASUS
  */
 @Component
 public class Provider implements AuthenticationProvider {
