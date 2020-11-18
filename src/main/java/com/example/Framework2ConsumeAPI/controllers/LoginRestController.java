@@ -21,13 +21,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class LoginRestController {
     @Autowired 
     LoginRestService service;
-    @GetMapping("")
+    @GetMapping("/login")
     public String index(Model model){
         model.addAttribute("logininput",new LoginInput());
         return "formLogin";
     }
     
-    @PostMapping("login")
+    @PostMapping("login_execute")
     public String login(LoginInput input) {
         System.out.println(input);
         System.out.println(service.login(input));

@@ -20,7 +20,7 @@ public class RegistrationRestController {
     @Autowired
     RegistrationRestService service;
     
-    @GetMapping("registrasi")
+    @GetMapping("register")
     public String regris(Model model){
         model.addAttribute("registrasi",new RegisterUser());
         return "formRegistrasi";

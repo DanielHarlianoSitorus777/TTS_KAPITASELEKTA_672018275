@@ -5,6 +5,7 @@
  */
 package com.example.Framework2ConsumeAPI.services;
 
+import com.example.Framework2ConsumeAPI.entities.rest.LoginOutput;
 import com.example.Framework2ConsumeAPI.entities.rest.ProfileAddress;
 import com.example.Framework2ConsumeAPI.entities.rest.ProfileBasic;
 import com.example.Framework2ConsumeAPI.entities.rest.ProfileContact;
@@ -17,6 +18,8 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -36,7 +39,7 @@ public class ProfileRestService {
 
         param.put("id", id);
 
-        result = restTemplate.getForObject("http://116.254.101.228:8080/ma_test/profile/basic/{id}", ProfileBasic.class, param);
+        result = restTemplate.getForObject("http://116.254.101.228:8080/ma_test/profile/basic/{id}"+getUserId(), ProfileBasic.class, param);
         return result;
 
     }
@@ -47,7 +50,7 @@ public class ProfileRestService {
 
         param.put("id", id);
 
-        result = restTemplate.getForObject("http://116.254.101.228:8080/ma_test/profile/address/{id}", ProfileAddress.class, param);
+        result = restTemplate.getForObject("http://116.254.101.228:8080/ma_test/profile/address/{id}"+getUserId(), ProfileAddress.class, param);
         return result;
     }
 
@@ -57,7 +60,7 @@ public class ProfileRestService {
 
         param.put("id", id);
 
-        result = restTemplate.getForObject("http://116.254.101.228:8080/ma_test/profile/contact/{id}", ProfileContact.class, param);
+        result = restTemplate.getForObject("http://116.254.101.228:8080/ma_test/profile/contact/{id}"+getUserId(), ProfileContact.class, param);
         return result;
     }
 
@@ -67,7 +70,7 @@ public class ProfileRestService {
 
         param.put("id", id);
 
-        result = restTemplate.getForObject("http://116.254.101.228:8080/ma_test/profile/currentoccupation/{id}", ProfileOccupation.class, param);
+        result = restTemplate.getForObject("http://116.254.101.228:8080/ma_test/profile/currentoccupation/{id}"+getUserId(), ProfileOccupation.class, param);
         return result;
     }
 
@@ -77,7 +80,7 @@ public class ProfileRestService {
 
         param.put("id", id);
 
-        result = restTemplate.getForObject("http://116.254.101.228:8080/ma_test/profile/education/{id}", ProfileEducation.class, param);
+        result = restTemplate.getForObject("http://116.254.101.228:8080/ma_test/profile/education/{id}"+getUserId(), ProfileEducation.class, param);
         return result;
     }
 
@@ -134,5 +137,11 @@ public class ProfileRestService {
         }
         );
         return responseEntity.getBody();
+    }
+    
+    public String getUserId(){
+        Authentication a = SecurityContextHolder.getContext().getAuthentication();
+        LoginOutput output = (LoginOutput)a.getPrincipal();
+        return output.getUser().getId();
     }
 }

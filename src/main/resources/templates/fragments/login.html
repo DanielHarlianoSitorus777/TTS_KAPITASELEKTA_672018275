@@ -1,5 +1,5 @@
 <div th:fragment="login">
-    <form th:object="${logininput}" th:action="@{login}" method="POST">
+    <form th:object="${logininput}" th:action="@{login_execute}" method="POST">
         <table width="25%" cellpadding="5%" style="margin-left: 250px; margin-top: 40%">
             <tr>
                 <td style="color: white">Email</td>
@@ -17,7 +17,7 @@
             </tr>
 
             <tr>
-                <td colspan="3"><input style="margin-left: 90px" type="submit" value="Login" name="Login" class="btn btn-success"/>&nbsp;&nbsp;&nbsp;<a href="registrasi" class="btn btn-secondary">Registrasi</a></td>
+                <td colspan="3"><input style="margin-left: 90px" type="submit" value="Login" name="Login" class="btn btn-success"/>&nbsp;&nbsp;&nbsp;<a href="register" class="btn btn-secondary">Registrasi</a></td>
                 
             </tr>
         </table>
